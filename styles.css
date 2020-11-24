@@ -37,7 +37,9 @@ a {
   background-size: contain;
   background-repeat: no-repeat;
   left: 50%;
-  bottom: 50px;
+  bottom: 10px;
+  align-items: center;
+  z-index: 2;
 }
 
 .monster {
@@ -54,10 +56,23 @@ a {
 .bullets {
   background: url("./assets/images/bullet.png");
   position: absolute;
-  bottom: 60px;
+  bottom: 10px;
   left: 30px;
   width: 30px;
   height: 30px;
   background-size: contain;
   background-repeat: no-repeat;
+  z-index: 1;
+}
+
+#points {
+  position: absolute;
+  display: block;
+  top: 10px;
+  margin: 40px;
+  padding: 20px;
+  opacity: 0.7px;
+  font-size: 7em;
+  color: white;
+  z-index: 2;
 }

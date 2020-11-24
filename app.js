@@ -3,41 +3,76 @@ let board = document.getElementById("board");
 
 window.addEventListener("keydown",(e) => {
     let left = parseInt(window.getComputedStyle(rocket).getPropertyValue("left"));
-    if(e.key == "ArrowLeft" && left > 25){
+    if(e.key == "ArrowLeft" && left > 50){
         rocket.style.left = left - 10 + "px";
     }
     else if(e.key == "ArrowRight" && left <= 1000){
         rocket.style.left = left + 10 +"px";
     }
-    if (e.key == "Enter") {
+    if (e.key == "ArrowUp" || e.key === " ") {
         let bullet = document.createElement("div");
         bullet.classList.add("bullets");
         board.appendChild(bullet);
 
         let movebullet = setInterval(()=> {
+
+            let monsters = document.getElementsByClassName("monster");
+            for (let i=0; i<monsters.length; i++){
+                let monster = monsters[i];
+
+                let monsterAttack = monster.getBoundingClientRect();
+                let bulletAttack = bullet.getBoundingClientRect();
+
+                if(
+                    bulletAttack.left >= monsterAttack.left && 
+                    bulletAttack.right <= monsterAttack.right &&
+                    bulletAttack.top <= monsterAttack.top &&
+                    bulletAttack.bottom <= monsterAttack.bottom
+                ) {
+                    monster.parentElement.removeChild(monster);
+
+                    document.getElementById("points").innerHTML = 
+                     parseInt(document.getElementById("points").innerHTML) + 1;
+                }
+
+                if (document.getElementById("points").innerHTML >= 5) {
+                    alert ("You Win!");
+                    clearInterval(movebullet);
+                    window.location.reload();
+                }
+            }
             let bulletbottom = parseInt(
                 window.getComputedStyle(bullet).getPropertyValue("bottom")
             );
             bullet.style.left = left + 30 + "px";
-            bullet.style.bottom = bulletbottom + 70 + "px";
+            bullet.style.bottom = bulletbottom + 50 + "px";
         },  50);
-    }
-    let top = parseInt(window.getComputedStyle(rocket).getPropertyValue("top"));
-    if (e.key == "ArrowUp" && top > 10) {
-        rocket.style.top = top - 10 + "px";  
-    }
+
+    };
+    //let top = parseInt(window.getComputedStyle(rocket).getPropertyValue("top"));
+    //if (e.key == "ArrowUp" && top > 10) {
+    //    rocket.style.top = top - 10 + "px";
+    //}
+    //else if (e.key =="ArrowDown" && top <= 670){
+    //    rocket.style.top = top + 10 + "px";
+    //}
 });
 
 let generatemonsters = setInterval(() => {
     let monst = document.createElement("div");
     monst.classList.add("monster");
+    //if (document.getElementsByClassName("monster").length > 10)document.querySelector(".monster:nth-child(10)").remove();
+    const monsters = document.querySelectorAll(".monster");
+    monsters.forEach (function (monster) {
+        if (+monster.style.top.substring(0, monster.style.top.length - 2)> 800) monster.remove()
+    })
     let monstleft = parseInt(window.getComputedStyle(monst).getPropertyValue("left"));
     monst.style.left = Math.floor(Math.random()*1000) + "px";
 
     board.appendChild(monst);
     clearInterval(monst);
 
-}, 2000);
+}, 1000);
 
 let movemonsters = setInterval(()=> {
     let monster = document.getElementsByClassName("monster");
@@ -49,7 +84,14 @@ let movemonsters = setInterval(()=> {
                 window.getComputedStyle(monst).getPropertyValue("top")
                 );
 
+                if(monstertop >= 700){
+                   alert("Game Over");
+                   clearInterval(movemonsters);
+                   window.location.reload();
+                }
+
             monst.style.top = monstertop + 40 + "px";
         }
     }
 }, 700);
+
