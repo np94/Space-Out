@@ -31,9 +31,9 @@ a {
 
 #rocket {
   position: absolute;
-  width: 90px;
-  height: 90px;
-  background: url("./assets/images/rocket2.png");
+  width: 100px;
+  height: 100px;
+  background: url("./assets/images/space-shuttle.png");
   background-size: contain;
   background-repeat: no-repeat;
   left: 50%;
@@ -45,9 +45,9 @@ a {
 .monster {
   position: absolute;
   top: 50px;
-  width: 50px;
-  height: 50px;
-  background: url("./assets/images/monster.png");
+  width: 60px;
+  height: 60px;
+  background: url("./assets/images/ufo.png");
   background-size: contain;
   background-repeat: no-repeat;
   right: 10%;

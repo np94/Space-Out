@@ -1,8 +1,13 @@
 let rocket = document.getElementById("rocket");
 let board = document.getElementById("board");
+let monsters = document.getElementsByClassName("monster");
+var audio = new Audio("./sounds/homepage.wav");
+audio.play();
+
 
 window.addEventListener("keydown",(e) => {
     let left = parseInt(window.getComputedStyle(rocket).getPropertyValue("left"));
+    
     if(e.key == "ArrowLeft" && left > 50){
         rocket.style.left = left - 10 + "px";
     }
@@ -11,12 +16,13 @@ window.addEventListener("keydown",(e) => {
     }
     if (e.key == "ArrowUp" || e.key === " ") {
         let bullet = document.createElement("div");
+        let music = document.querySelector(".bullets >.soundBullets");
         bullet.classList.add("bullets");
         board.appendChild(bullet);
-
+        music.play();
+       
         let movebullet = setInterval(()=> {
-
-            let monsters = document.getElementsByClassName("monster");
+            
             for (let i=0; i<monsters.length; i++){
                 let monster = monsters[i];
 
@@ -36,8 +42,9 @@ window.addEventListener("keydown",(e) => {
                 }
 
                 if (document.getElementById("points").innerHTML >= 5) {
-                    alert ("You Win!");
+                    document.getElementById("points").innerHTML = 0;
                     clearInterval(movebullet);
+                    alert ("You Win!");
                     window.location.reload();
                 }
             }
@@ -46,7 +53,7 @@ window.addEventListener("keydown",(e) => {
             );
             bullet.style.left = left + 30 + "px";
             bullet.style.bottom = bulletbottom + 50 + "px";
-        },  50);
+        },  100);
 
     };
     //let top = parseInt(window.getComputedStyle(rocket).getPropertyValue("top"));
@@ -72,7 +79,7 @@ let generatemonsters = setInterval(() => {
     board.appendChild(monst);
     clearInterval(monst);
 
-}, 1000);
+}, 1500);
 
 let movemonsters = setInterval(()=> {
     let monster = document.getElementsByClassName("monster");
@@ -91,7 +98,10 @@ let movemonsters = setInterval(()=> {
                 }
 
             monst.style.top = monstertop + 40 + "px";
+            
         }
     }
 }, 700);
+
+
 
