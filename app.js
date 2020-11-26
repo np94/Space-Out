@@ -11,7 +11,7 @@ window.addEventListener("keydown",(e) => {
     if(e.key == "ArrowLeft" && left > 0){
         rocket.style.left = left - 10 + "px";
     }
-    else if(e.key == "ArrowRight" && left <= 620){
+    else if(e.key == "ArrowRight" && left <= 500){
         rocket.style.left = left + 20 +"px";
     }
     if (e.key == "ArrowUp" || e.key === " ") {
@@ -71,10 +71,10 @@ let generatemonsters = setInterval(() => {
     //if (document.getElementsByClassName("monster").length > 10)document.querySelector(".monster:nth-child(10)").remove();
     const monsters = document.querySelectorAll(".monster");
     monsters.forEach (function (monster) {
-        if (+monster.style.top.substring(0, monster.style.top.length - 2)> 700) monster.remove()
+        if (+monster.style.top.substring(0, monster.style.top.length - 2)> 500) monster.remove()
     })
     let monstleft = parseInt(window.getComputedStyle(monst).getPropertyValue("left"));
-    monst.style.left = Math.floor(Math.random()*680) + "px";
+    monst.style.left = Math.floor(Math.random()*500) + "px";
 
     board.appendChild(monst);
     clearInterval(monst);
@@ -91,7 +91,7 @@ let movemonsters = setInterval(()=> {
                 window.getComputedStyle(monst).getPropertyValue("top")
                 );
 
-                if(monstertop >= 680){
+                if(monstertop >= 520){
                    alert("Game Over");
                    clearInterval(movemonsters);
                    window.location.reload();
@@ -103,5 +103,6 @@ let movemonsters = setInterval(()=> {
     }
 }, 1000);
 
-
+var audio = new Audio("./assets/sounds/homepage.wav");
+audio.play();
 

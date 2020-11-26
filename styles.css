@@ -3,6 +3,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 }
 
 h3 {
@@ -23,8 +24,8 @@ a {
 
 #board {
   position: relative;
-  width: 700px;
-  height: 700px;
+  width: 40vw;
+  height: 80vh;
   border: 2px solid white;
   background-color: black;
   overflow: hidden;
