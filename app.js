@@ -71,10 +71,10 @@ let generatemonsters = setInterval(() => {
     //if (document.getElementsByClassName("monster").length > 10)document.querySelector(".monster:nth-child(10)").remove();
     const monsters = document.querySelectorAll(".monster");
     monsters.forEach (function (monster) {
-        if (+monster.style.top.substring(0, monster.style.top.length - 2)> 800) monster.remove()
+        if (+monster.style.top.substring(0, monster.style.top.length - 2)> 700) monster.remove()
     })
     let monstleft = parseInt(window.getComputedStyle(monst).getPropertyValue("left"));
-    monst.style.left = Math.floor(Math.random()*700) + "px";
+    monst.style.left = Math.floor(Math.random()*680) + "px";
 
     board.appendChild(monst);
     clearInterval(monst);

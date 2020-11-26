@@ -55,14 +55,14 @@ section h1 {
   position: absolute;
   color: white;
   z-index: 1;
-  bottom: 270px;
+  bottom: 350px;
 }
 
 section h3 {
   position: absolute;
   color: white;
   z-index: 1;
-  bottom: 180px;
+  bottom: 250px;
   text-align: center;
 }
 
