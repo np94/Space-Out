@@ -91,7 +91,7 @@ let movemonsters = setInterval(()=> {
                 window.getComputedStyle(monst).getPropertyValue("top")
                 );
 
-                if(monstertop >= 520){
+                if(monstertop >= 495){
                    alert("Game Over");
                    clearInterval(movemonsters);
                    window.location.reload();
