@@ -105,4 +105,5 @@ let movemonsters = setInterval(()=> {
 
 var audio = new Audio("./assets/sounds/homepage.wav");
 audio.play();
+audio.loop = true;
 
