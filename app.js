@@ -1,18 +1,18 @@
 let rocket = document.getElementById("rocket");
 let board = document.getElementById("board");
 let monsters = document.getElementsByClassName("monster");
-var audio = new Audio("./sounds/homepage.wav");
-audio.play();
+//var audio = new Audio("./sounds/homepage.wav");
+//audio.play();
 
 
 window.addEventListener("keydown",(e) => {
     let left = parseInt(window.getComputedStyle(rocket).getPropertyValue("left"));
     
-    if(e.key == "ArrowLeft" && left > 50){
+    if(e.key == "ArrowLeft" && left > 0){
         rocket.style.left = left - 10 + "px";
     }
-    else if(e.key == "ArrowRight" && left <= 1000){
-        rocket.style.left = left + 10 +"px";
+    else if(e.key == "ArrowRight" && left <= 620){
+        rocket.style.left = left + 20 +"px";
     }
     if (e.key == "ArrowUp" || e.key === " ") {
         let bullet = document.createElement("div");
@@ -41,7 +41,7 @@ window.addEventListener("keydown",(e) => {
                      parseInt(document.getElementById("points").innerHTML) + 1;
                 }
 
-                if (document.getElementById("points").innerHTML >= 5) {
+                if (document.getElementById("points").innerHTML > 10) {
                     document.getElementById("points").innerHTML = 0;
                     clearInterval(movebullet);
                     alert ("You Win!");
@@ -51,7 +51,7 @@ window.addEventListener("keydown",(e) => {
             let bulletbottom = parseInt(
                 window.getComputedStyle(bullet).getPropertyValue("bottom")
             );
-            bullet.style.left = left + 30 + "px";
+            bullet.style.left = left + 20 + "px";
             bullet.style.bottom = bulletbottom + 50 + "px";
         },  100);
 
@@ -74,12 +74,12 @@ let generatemonsters = setInterval(() => {
         if (+monster.style.top.substring(0, monster.style.top.length - 2)> 800) monster.remove()
     })
     let monstleft = parseInt(window.getComputedStyle(monst).getPropertyValue("left"));
-    monst.style.left = Math.floor(Math.random()*1000) + "px";
+    monst.style.left = Math.floor(Math.random()*700) + "px";
 
     board.appendChild(monst);
     clearInterval(monst);
 
-}, 1500);
+}, 2000);
 
 let movemonsters = setInterval(()=> {
     let monster = document.getElementsByClassName("monster");
@@ -91,17 +91,17 @@ let movemonsters = setInterval(()=> {
                 window.getComputedStyle(monst).getPropertyValue("top")
                 );
 
-                if(monstertop >= 700){
+                if(monstertop >= 680){
                    alert("Game Over");
                    clearInterval(movemonsters);
                    window.location.reload();
                 }
 
-            monst.style.top = monstertop + 40 + "px";
+            monst.style.top = monstertop + 20 + "px";
             
         }
     }
-}, 700);
+}, 1000);
 
 
 

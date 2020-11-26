@@ -27,13 +27,13 @@ section h2 {
   -webkit-text-stroke: 2px #fff;
   text-transform: uppercase;
   z-index: 1;
-  top: 200px;
+  top: 100px;
 }
 
 section a {
   z-index: 1;
   position: absolute;
-  bottom: 150px;
+  bottom: 80px;
   padding: 30px;
 }
 
@@ -55,14 +55,14 @@ section h1 {
   position: absolute;
   color: white;
   z-index: 1;
-  bottom: 400px;
+  bottom: 270px;
 }
 
 section h3 {
   position: absolute;
   color: white;
   z-index: 1;
-  bottom: 300px;
+  bottom: 180px;
   text-align: center;
 }
 
